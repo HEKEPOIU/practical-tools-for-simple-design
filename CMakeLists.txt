@@ -4,7 +4,8 @@ project(PracticalToolsForSimpleDesign)
 set(CMAKE_CXX_STANDARD 17)
 set(CMAKE_CXX_STANDARD_REQUIRED ON)
 set(CMAKE_CXX_EXTENSIONS OFF)
-if (MSVC)
+
+if(MSVC)
     set(TARGET_COMPILE_OPTIONS
         /W4
     )
@@ -17,7 +18,7 @@ else()
     )
 endif()
 
-if (WIN32 AND CMAKE_CXX_COMPILER_ID STREQUAL "Clang")
+if(WIN32 AND CMAKE_CXX_COMPILER_ID STREQUAL "Clang")
     # see https://github.com/ntut-open-source-club/practical-tools-for-simple-design/issues/22
     set(CMAKE_RC_FLAGS="-C 1252")
 endif()
@@ -118,11 +119,13 @@ target_include_directories(Sample SYSTEM PRIVATE
 target_include_directories(Sample PRIVATE
     ${INCLUDE_DIR}
 )
-if (${PTSD_ENABLE_PCH})
+
+if(${PTSD_ENABLE_PCH})
     target_precompile_headers(Sample PRIVATE
         include/pch.hpp
     )
 endif()
+
 target_compile_options(Sample PRIVATE
     ${TARGET_COMPILE_OPTIONS}
 )
@@ -171,3 +174,41 @@ target_compile_options(AudioTest PRIVATE
 
 include(GoogleTest)
 gtest_discover_tests(Tests)
+
+add_library(${PROJECT_NAME}
+    ${SRC_FILES}
+)
+
+if(${CMAKE_BUILD_TYPE} STREQUAL "Debug")
+    target_compile_definitions(${PROJECT_NAME} PRIVATE
+        PTSD_DIR="${CMAKE_CURRENT_SOURCE_DIR}"
+    )
+else()
+    target_compile_definitions(${PROJECT_NAME} PRIVATE
+        PTSD_DIR=".."
+    )
+endif()
+
+target_include_directories(${PROJECT_NAME} SYSTEM PRIVATE
+    ${DEPENDENCY_INCLUDE_DIRS}
+)
+target_link_libraries(${PROJECT_NAME}
+    SDL2::SDL2main # IDK what happens if we don't link SDL2main
+    ${DEPENDENCY_LINK_LIBRARIES}
+)
+target_include_directories(${PROJECT_NAME} SYSTEM PRIVATE
+    ${DEPENDENCY_INCLUDE_DIRS}
+)
+target_include_directories(${PROJECT_NAME} PRIVATE
+    ${INCLUDE_DIR}
+)
+
+if(${PTSD_ENABLE_PCH})
+    target_precompile_headers(${PROJECT_NAME} PRIVATE
+        include/pch.hpp
+    )
+endif()
+
+target_compile_options(${PROJECT_NAME} PRIVATE
+    ${TARGET_COMPILE_OPTIONS}
+)
