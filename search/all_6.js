@@ -1,6 +1,6 @@
 var searchData=
 [
-  ['gameobject_0',['GameObject',['../classUtil_1_1GameObject.html#ae7df90c02e4d0fe5426b46fdc4d88c63',1,'Util::GameObject::GameObject()=default'],['../classUtil_1_1GameObject.html#a50de79f3094f1714add8eea6dbc1095c',1,'Util::GameObject::GameObject(const std::shared_ptr&lt; Core::Drawable &gt; &amp;drawable, const float zIndex, const bool visible=true, const std::vector&lt; std::shared_ptr&lt; GameObject &gt; &gt; &amp;children=std::vector&lt; std::shared_ptr&lt; GameObject &gt; &gt;())'],['../classUtil_1_1GameObject.html#a2b42040c45d8043eef7225fcddd9ecde',1,'Util::GameObject::GameObject(const GameObject &amp;other)=default'],['../classUtil_1_1GameObject.html#a1a52f30d2e5706bfa881d9290049b82c',1,'Util::GameObject::GameObject(GameObject &amp;&amp;other)=default'],['../classUtil_1_1GameObject.html',1,'Util::GameObject']]],
+  ['gameobject_0',['GameObject',['../classUtil_1_1GameObject.html#ae7df90c02e4d0fe5426b46fdc4d88c63',1,'Util::GameObject::GameObject()=default'],['../classUtil_1_1GameObject.html#a0addc230eb32fcbfe5af0004f179e921',1,'Util::GameObject::GameObject(const std::shared_ptr&lt; Core::Drawable &gt; &amp;drawable, const float zIndex, const glm::vec2 &amp;pivot={0, 0}, const bool visible=true, const std::vector&lt; std::shared_ptr&lt; GameObject &gt; &gt; &amp;children=std::vector&lt; std::shared_ptr&lt; GameObject &gt; &gt;())'],['../classUtil_1_1GameObject.html#a2b42040c45d8043eef7225fcddd9ecde',1,'Util::GameObject::GameObject(const GameObject &amp;other)=default'],['../classUtil_1_1GameObject.html#a1a52f30d2e5706bfa881d9290049b82c',1,'Util::GameObject::GameObject(GameObject &amp;&amp;other)=default'],['../classUtil_1_1GameObject.html',1,'Util::GameObject']]],
   ['get_1',['Get',['../classUtil_1_1AssetStore.html#ac2492dac04aca0fbe8613b6ea032339e',1,'Util::AssetStore']]],
   ['getchildren_2',['GetChildren',['../classUtil_1_1GameObject.html#a6d90442f733edd59e4fcf2d49477a351',1,'Util::GameObject']]],
   ['getcooldown_3',['GetCooldown',['../classUtil_1_1Animation.html#a2498ad5f0009482158b9146b11582431',1,'Util::Animation']]],
@@ -18,7 +18,5 @@ var searchData=
   ['gettransform_15',['GetTransform',['../classUtil_1_1GameObject.html#aed7d7fc80b4985a2e134306271aff76e',1,'Util::GameObject']]],
   ['getvolume_16',['GetVolume',['../classUtil_1_1BGM.html#a20c43ddc9398b024dc5e336804bcb38c',1,'Util::BGM::GetVolume()'],['../classUtil_1_1SFX.html#a64169aa6ca5ba26fcfe60caaacb92192',1,'Util::SFX::GetVolume()']]],
   ['getzindex_17',['GetZIndex',['../classUtil_1_1GameObject.html#a13950c92838074c12c7a63de8feda92c',1,'Util::GameObject']]],
-  ['giraffe_18',['Giraffe',['../classGiraffe.html',1,'']]],
-  ['giraffetext_19',['GiraffeText',['../classGiraffeText.html',1,'']]],
-  ['grave_20',['GRAVE',['../namespaceUtil.html#a17caf66bd49f055feb4a848c4da8cdc5a0454988b6250b7e13d8e9222e118c127',1,'Util']]]
+  ['grave_18',['GRAVE',['../namespaceUtil.html#a17caf66bd49f055feb4a848c4da8cdc5a0454988b6250b7e13d8e9222e118c127',1,'Util']]]
 ];
