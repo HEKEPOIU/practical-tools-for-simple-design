@@ -4,7 +4,8 @@ project(PracticalToolsForSimpleDesign)
 set(CMAKE_CXX_STANDARD 17)
 set(CMAKE_CXX_STANDARD_REQUIRED ON)
 set(CMAKE_CXX_EXTENSIONS OFF)
-if (MSVC)
+
+if(MSVC)
     set(TARGET_COMPILE_OPTIONS
         /W4
     )
@@ -17,7 +18,7 @@ else()
     )
 endif()
 
-if (WIN32 AND CMAKE_CXX_COMPILER_ID STREQUAL "Clang")
+if(WIN32 AND CMAKE_CXX_COMPILER_ID STREQUAL "Clang")
     # see https://github.com/ntut-open-source-club/practical-tools-for-simple-design/issues/22
     set(CMAKE_RC_FLAGS="-C 1252")
 endif()
@@ -52,6 +53,7 @@ set(SRC_FILES
     ${SRC_DIR}/Util/Color.cpp
     ${SRC_DIR}/Util/Animation.cpp
     ${SRC_DIR}/Util/MissingTexture.cpp
+    ${SRC_DIR}/Util/SpriteSheet.cpp
 )
 set(INCLUDE_DIR ${CMAKE_CURRENT_SOURCE_DIR}/include)
 set(INCLUDE_FILES
@@ -88,6 +90,7 @@ set(INCLUDE_FILES
     ${INCLUDE_DIR}/Util/MissingTexture.hpp
     ${INCLUDE_DIR}/Util/Base64.hpp
     ${INCLUDE_DIR}/Util/Animation.hpp
+    ${INCLUDE_DIR}/Util/SpriteSheet.hpp
 )
 set(EXAMPLE_DIR ${CMAKE_CURRENT_SOURCE_DIR}/example)
 set(EXAMPLE_FILES
@@ -123,7 +126,10 @@ target_include_directories(PTSD SYSTEM PRIVATE
 target_include_directories(PTSD PRIVATE
     ${INCLUDE_DIR}
 )
-if (${PTSD_ENABLE_PCH})
+
+target_compile_definitions(PTSD PRIVATE ASSETS_DIR="${CMAKE_CURRENT_SOURCE_DIR}/assets")
+
+if(${PTSD_ENABLE_PCH})
     target_precompile_headers(PTSD PRIVATE
         include/pch.hpp
     )

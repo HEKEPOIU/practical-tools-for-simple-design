@@ -10,16 +10,16 @@ constexpr const char *TITLE = "Practical Tools for Simple Design";
 constexpr int WINDOW_POS_X = SDL_WINDOWPOS_UNDEFINED;
 constexpr int WINDOW_POS_Y = SDL_WINDOWPOS_UNDEFINED;
 
-constexpr unsigned int WINDOW_WIDTH = 1280;
-constexpr unsigned int WINDOW_HEIGHT = 720;
+constexpr unsigned int WINDOW_WIDTH = 1920;
+constexpr unsigned int WINDOW_HEIGHT = 1080;
 
-constexpr Util::Logger::Level DEFAULT_LOG_LEVEL = Util::Logger::Level::DEBUG;
+constexpr Util::Logger::Level DEFAULT_LOG_LEVEL = Util::Logger::Level::ERROR;
 
 /**
  * @brief FPS limit
  *
  * Set value to 0 to turn off FPS cap
  */
-constexpr unsigned int FPS_CAP = 60;
+constexpr unsigned int FPS_CAP = 165;
 
 #endif

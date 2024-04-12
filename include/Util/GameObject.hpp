@@ -6,6 +6,7 @@
 #include "Core/Drawable.hpp"
 
 #include "Util/Transform.hpp"
+#include <glm/fwd.hpp>
 
 namespace Util {
 /**
@@ -153,6 +154,26 @@ public:
     }
 
     void Draw();
+
+    bool IsOnTop(glm::vec2 cursorPosition) {
+        glm::vec4 boundingBox = GetBoundingBox();
+        if (cursorPosition.x > boundingBox.x &&
+            cursorPosition.x < boundingBox.y &&
+            cursorPosition.y > boundingBox.z &&
+            cursorPosition.y < boundingBox.w) {
+            return true;
+        } else {
+            return false;
+        }
+    };
+
+    glm::vec4 GetBoundingBox() const {
+        glm::vec2 selfPos = m_Transform.translation;
+        glm::vec2 selfSize = GetScaledSize();
+
+        return {selfPos.x - selfSize.x / 2, selfPos.x + selfSize.x / 2,
+                selfPos.y - selfSize.y / 2, selfPos.y + selfSize.y / 2};
+    }
 
 protected:
     std::shared_ptr<Core::Drawable> m_Drawable = nullptr;

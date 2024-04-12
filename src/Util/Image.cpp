@@ -38,12 +38,12 @@ Image::Image(const std::string &filepath)
     m_UniformBuffer = std::make_unique<Core::UniformBuffer<Core::Matrices>>(
         *s_Program, "Matrices", 0);
 
-    auto surface = s_Store.Get(filepath);
+    m_Surface = s_Store.Get(filepath);
 
     m_Texture = std::make_unique<Core::Texture>(
-        Core::SdlFormatToGlFormat(surface->format->format), surface->w,
-        surface->h, surface->pixels);
-    m_Size = {surface->w, surface->h};
+        Core::SdlFormatToGlFormat(m_Surface->format->format), m_Surface->w,
+        m_Surface->h, m_Surface->pixels);
+    m_Size = {m_Surface->w, m_Surface->h};
 }
 
 void Image::SetImage(const std::string &filepath) {
@@ -67,8 +67,8 @@ void Image::Draw(const Core::Matrices &data) {
 
 void Image::InitProgram() {
     // TODO: Create `BaseProgram` from `Program` and pass it into `Drawable`
-    s_Program = std::make_unique<Core::Program>("../assets/shaders/Base.vert",
-                                                "../assets/shaders/Base.frag");
+    s_Program = std::make_unique<Core::Program>(
+        ASSETS_DIR "/shaders/Base.vert", ASSETS_DIR "/shaders/Base.frag");
     s_Program->Bind();
 
     GLint location = glGetUniformLocation(s_Program->GetId(), "surface");
@@ -109,6 +109,12 @@ void Image::InitVertexArray() {
             0, 2, 3, //
         }));
     // NOLINTEND
+}
+
+void Image::UpdateTextureData(const SDL_Surface &surface) {
+    m_Texture->UpdateData(Core::SdlFormatToGlFormat(surface.format->format),
+                          surface.w, surface.h, surface.pixels);
+    m_Size = {surface.w, surface.h};
 }
 
 std::unique_ptr<Core::Program> Image::s_Program = nullptr;
