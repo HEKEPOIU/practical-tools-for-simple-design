@@ -175,6 +175,8 @@ public:
                 selfPos.y - selfSize.y / 2, selfPos.y + selfSize.y / 2};
     }
 
+    bool GetVisible() const { return m_Visible; }
+
 protected:
     std::shared_ptr<Core::Drawable> m_Drawable = nullptr;
     std::vector<std::shared_ptr<GameObject>> m_Children;
