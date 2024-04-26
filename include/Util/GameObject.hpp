@@ -131,7 +131,12 @@ public:
      *
      * @param visible The new visibility of the game object.
      */
-    void SetVisible(const bool visible) { m_Visible = visible; }
+    void SetVisible(const bool visible) {
+        m_Visible = visible;
+        for (auto child : m_Children) {
+            child->SetVisible(visible);
+        }
+    }
 
     /**
      * @brief Add a child to the game object.
