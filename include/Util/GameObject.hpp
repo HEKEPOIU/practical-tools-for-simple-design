@@ -83,6 +83,13 @@ public:
      */
     Transform GetTransform() const { return m_Transform; }
 
+    void SetPositionWithChild(glm::vec2 newTransform) {
+        m_Transform.translation = newTransform;
+        for (auto child : m_Children) {
+            child->SetPositionWithChild(newTransform);
+        }
+    };
+
     /**
      * @brief Get the size of its drawable component.
      *
